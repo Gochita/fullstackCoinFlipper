@@ -10,7 +10,7 @@ const Result = (props) => {
 
 const stateMapToPros = state => {
   return {
-    result: state.random.result?.randomList
+    result: state.random.result?.resultado
   }
 }
 

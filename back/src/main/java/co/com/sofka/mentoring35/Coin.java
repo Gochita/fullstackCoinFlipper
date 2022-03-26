@@ -9,15 +9,20 @@ import org.springframework.data.mongodb.core.mapping.Document;
 @Document
 public class Coin {
     private Date date;
+    private String resultado;
+
+
     @Id
     private String id;
 
-    private Integer orginalList;
 
-    private List<Integer> randomList;
+    public String getId() {
+        return id;
+    }
 
-    public List<Integer> getRandomList() {
-        return randomList;
+
+    public void setId(String id) {
+        this.id = id;
     }
 
     public Date getDate() {
@@ -28,26 +33,11 @@ public class Coin {
         this.date = date;
     }
 
-    public String getId() {
-        return id;
+    public String getResultado() {
+        return resultado;
     }
 
-    public void setIde(String id) {
-        this.id = id;
+    public void setResultado(String resultado) {
+        this.resultado = resultado;
     }
-
-
-    public Integer getOrginalList() {
-        return orginalList;
-    }
-
-    public void setOrginalList(Integer orginalList) {
-        this.orginalList = orginalList;
-    }
-
-    public void setRandomList(List<Integer> randomList) {
-        this.randomList = randomList;
-    }
-
-    
 }

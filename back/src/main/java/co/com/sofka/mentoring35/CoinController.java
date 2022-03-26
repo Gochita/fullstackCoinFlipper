@@ -2,6 +2,7 @@ package co.com.sofka.mentoring35;
 
 import java.util.Collections;
 import java.util.Date;
+import java.util.Random;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -22,7 +23,6 @@ import reactor.core.publisher.Mono;
 public class CoinController {
 
     private final RandomRepository randomRepository;
-    int numerito= (int)(Math.random()*(2));
 
 
     @Autowired
@@ -31,23 +31,24 @@ public class CoinController {
     }
 
     @PostMapping("")
-    public Mono<Coin> post(@RequestBody RequestDTO request) {
-        
+    public Mono<Coin> post() {
+        String cara;
+        int valorCoin = new Random().nextInt(2);
+        switch (valorCoin) {
+            case 0:
+                cara = "cara";
+                break;
+            case 1:
+                cara = "cruz";
+                break;
+            default:
+                cara = "Imposible";
+        }
+
+
         return Mono.just(new Coin()).map(entity -> {
             entity.setDate(new Date());
-            entity.setOrginalList(request.getNumeroMonedas());
-            return entity;
-        }).map(entity -> {
-
-            var list = Stream.of(request.getNumeroMonedas())
-                .collect(Collectors.toList()).stream()
-                    .map(item ->{
-                        item= numerito;
-                        return item;
-                    }
-                    ).collect(Collectors.toList());
-
-            entity.setRandomList(list);
+            entity.setResultado(cara);
             return entity;
         }).flatMap(randomRepository::save);
     }
