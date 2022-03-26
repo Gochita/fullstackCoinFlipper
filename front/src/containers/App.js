@@ -4,7 +4,14 @@ import Result from "../components/Result";
 
 class App extends Component {
   // component stateful
+
+
   render() {
+    const estilo ={
+      position:'absolute',
+      right:'20px',
+      bottom:'20px',
+    }
     return (
       <Fragment>
         <center>
@@ -13,6 +20,7 @@ class App extends Component {
           <From />
           <br />
           <Result />
+          <img style = {estilo} src={require('../img/signature.png').default}/>
         </center>
       </Fragment>
     );
