@@ -1,10 +1,11 @@
-import React from 'react'
+import React, { Fragment } from 'react'
 import { connect } from 'react-redux';
+import Imagen from './imagen';
 const Result = (props) => {
   
-  return <div>
-     {props.result && 'Resultado: '+ props.result} 
-  </div>
+  return <Fragment>
+      <Imagen url = {props.result} />
+  </Fragment>
 }
 
 
